@@ -26,3 +26,18 @@ ncs --stop                                -- stop NCS
 ncs_cli -u admin                          -- start a CLI into NCS
 ncs-setup --eclipse-setup                 -- create eclipse dev files here
 ```
+
+# api usage
+
+Once running, you can provision access ports on your devices w/ the following
+
+POST /api/running
+
+```
+<access xmlns="http://com/example/access">
+    <description>{description}</description>
+    <device>{DEVICE-NAME}/device>
+    <vlan>{vlan number}</vlan>
+    <access-interface>{interface-name}</access-interface>
+</access>
+```
