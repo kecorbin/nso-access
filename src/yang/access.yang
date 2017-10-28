@@ -1,0 +1,39 @@
+module access {
+  namespace "http://com/example/access";
+  prefix access;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  list access {
+    key description;
+    uses ncs:service-data;
+    ncs:servicepoint "access";
+
+    leaf description {
+      type string;
+    }
+
+    // may replace this with other ways of refering to the devices.
+    leaf device {
+      type leafref {
+        path "/ncs:devices/ncs:device/ncs:name";
+      }
+    }
+
+    // replace with your own stuff here
+    leaf vlan {
+	mandatory true;
+        type uint16;
+    }
+    leaf access-interface {
+        mandatory true;
+        type string;
+    }
+    
+  }
+}
